@@ -3,7 +3,6 @@ import {TextField, FormControl, Grid,
      Button, Card} from '@material-ui/core';
 import clsx from 'clsx';
 import {useStyles} from '../layout/Style';
-import {Skeleton } from '@material-ui/lab';
 import {CloudUpload as CloudUploadIcon} from '@material-ui/icons';
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -37,7 +36,6 @@ const AddMovie = (props) => {
             setMovie({...movie,
                 thumbnail: event.target.files[0]
                 });
-            var image = document.getElementById('inp_thumbnail');
             document.getElementById('myImg').src = URL.createObjectURL(event.target.files[0]);
             document.getElementById('myImg').style.display = "block";
         }
@@ -86,13 +84,12 @@ const AddMovie = (props) => {
         return materialDateInput;
     }
 
-    const handleThumbnailClick = (e) => {
+    const handleThumbnailClick = () => {
         document.getElementById('inp_thumbnail').click();
         
     }
 
-    return ( 
-        <div className='text-align-center'>
+    return (  <div className='text-align-center'>
             <h2 className="heading-constant">Add Movie</h2>
             <form onSubmit={handleSubmit} >
             <Card className='container'>

@@ -1,14 +1,12 @@
 import React,  { useState, useContext} from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import {TextField, FormControl, InputAdornment, InputLabel, Grid,
      IconButton, OutlinedInput, Button, } from '@material-ui/core';
-import {VisibilityOff, Visibility, LockRounded, apiRound} from '@material-ui/icons';
+import {VisibilityOff, Visibility, LockRounded} from '@material-ui/icons';
 import clsx from 'clsx';
 import axios from 'axios';
 import  {AxiosConstant} from '../../constants/AxiosConstants';
 import {setCookie} from '../../helperMethods/CookieHelper';
 import Theater from  '../../media/images/theater1.jpg';
-import TheaterMobile from  '../../media/images/theater2.jpg';
 import {isTablet, isMobile, BrowserView, MobileOnlyView, TabletView} from 'react-device-detect';
 import {Link} from 'react-router-dom';
 import {NavbarContext} from '../../context/NavbarContext';
@@ -30,7 +28,7 @@ const Login = (props) => {
 
     const classes = useStyles();
     
-    const handleChange = (prop) => (event) => {
+    const handleChange = () => (event) => {
         setLogin({...login, [event.target.id]: event.target.value });
     };
     
@@ -110,7 +108,7 @@ const Login = (props) => {
                     </Grid>
                     <Grid item sm={6} md={8} className="image-dom">
                         <Grid  className='grid-background-theater'>
-                            <img src={Theater}  className='background-theater'/>
+                            <img src={Theater} alt='loginImage' className='background-theater'/>
                         </Grid>  
                     </Grid>
                 </Grid>

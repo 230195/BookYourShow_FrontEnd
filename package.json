@@ -12,9 +12,11 @@
     "axios": "^0.19.2",
     "jquery": "^3.5.1",
     "react": "^16.13.1",
+    "react-data-grid": "^7.0.0-canary.16",
     "react-device-detect": "^1.12.1",
     "react-dom": "^16.13.1",
     "react-infinite-loader": "^1.0.4",
+    "react-js-pagination": "^3.0.3",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "react-toastify": "^6.0.5"

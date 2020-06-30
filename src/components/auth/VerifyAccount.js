@@ -10,7 +10,7 @@ import  toast from "../../axios.interceptor";
 
 const VerifyAccount = (props) => {
     const [message, setMessage] = useState('Please verify your account and then  ');
-    const {navbar,setUserLogIn} = useContext(NavbarContext);
+    const {setUserLogIn} = useContext(NavbarContext);
     const {userId, token} = queryString.parse(props.location.search);
 
     useEffect(() => {
@@ -25,7 +25,7 @@ const VerifyAccount = (props) => {
                     setUserLogIn(true, res.data?.data?.fullName);
                     props.history.push('/');
                 })
-                .catch(err => setMessage("Verification Failed."));
+                .catch(() => setMessage("Verification Failed."));
         }
     },[]);
 

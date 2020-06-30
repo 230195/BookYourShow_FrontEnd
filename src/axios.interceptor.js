@@ -20,11 +20,9 @@ function showValidationErrorMessages(response){
     if(response?.data?.errors){
         let errors = response.data.errors;
         let keys = Object.keys(errors);
-        let errorMessage;
         let count = 0;
         keys.forEach(key => {
             count=0;
-            errorMessage = '';
             let message = errors[key].map(error => {
                 count++;
                 return (

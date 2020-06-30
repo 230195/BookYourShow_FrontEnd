@@ -6,7 +6,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
 import NavbarContextProvider from './context/NavbarContext';
 import {BrowserRouter} from 'react-router-dom';
-import {CircularProgress, LinearProgress} from '@material-ui/core';
+import {LinearProgress} from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {

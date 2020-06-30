@@ -21,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
 
 const BodyContent = () => {
     const classes = useStyles();
-    const theme = useTheme();
     const {navbar} = useContext(NavbarContext);
     const {isNavOpen} = navbar; 
     const dom = (

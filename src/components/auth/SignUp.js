@@ -1,12 +1,9 @@
 import React,  { useState, useContext} from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import {TextField, FormControl, InputAdornment, InputLabel, Grid,
      IconButton, OutlinedInput, Button, } from '@material-ui/core';
 import {VisibilityOff, Visibility, LockRounded} from '@material-ui/icons';
 import clsx from 'clsx';
 import axios from 'axios';
-import  {AxiosConstant} from '../../constants/AxiosConstants';
-import {setCookie} from '../../helperMethods/CookieHelper';
 import Theater from  '../../media/images/theater1.jpg';
 import {isTablet, isMobile, BrowserView, MobileOnlyView, TabletView} from 'react-device-detect';
 import {Link} from 'react-router-dom';
@@ -31,7 +28,7 @@ const SignUp = (props) => {
 
     const classes = useStyles();
 
-    const handleChange = (prop) => (event) => {
+    const handleChange = () => (event) => {
         setSignUp({...signup, [event.target.id]: event.target.value });
     };
     
@@ -51,7 +48,7 @@ const SignUp = (props) => {
             ConfirmPassword:signup.confirmPassword,
             FullName: signup.fullName
         })
-        .then(res => {
+        .then(() => {
             toast.success("Successfully registered, Please verify your Email Id");
             props.history.push('/verifyaccount');
         })
@@ -81,7 +78,6 @@ const SignUp = (props) => {
                         autoComplete="true"
                         onChange={handleChange('password')}
                         placeholder="Enter Your Password"
-                        required
                         endAdornment={
                         <InputAdornment position="end">
                             <IconButton
@@ -108,7 +104,6 @@ const SignUp = (props) => {
                         onChange={handleChange('confirmPassword')}
                         placeholder="Confirm Password"
                         labelWidth={80}
-                        required
                     />
                 </FormControl>
                 <FormControl  fullWidth  className={clsx(classes.margin)} variant="outlined">
@@ -137,7 +132,7 @@ const SignUp = (props) => {
                     </Grid>
                     <Grid item sm={6} md={8} className="image-dom">
                         <Grid  className='grid-background-theater'>
-                            <img src={Theater}  className='background-theater'/>
+                            <img src={Theater} alt='signupImage'  className='background-theater'/>
                         </Grid>  
                     </Grid>
                 </Grid>

@@ -1,10 +1,8 @@
 import React, {useState, useEffect,  useContext} from 'react';
 import { NavbarContext } from '../../context/NavbarContext';
-import {Box, Typography, Card, CardActionArea, CardActions, CardContent, CardMedia,
-    Grid, Button } from '@material-ui/core';
+import {Typography, Card, CardContent, Grid, Button } from '@material-ui/core';
 import {Skeleton } from '@material-ui/lab';
 import axios from 'axios';
-import { useStyles } from '../layout/Style';
 import {Link} from 'react-router-dom';
 import { AxiosConstant } from '../../constants/AxiosConstants';
 
@@ -14,7 +12,6 @@ const MovieDetails = (props) => {
         movie: {},
         isLoaded : false});
     const{movie, isLoaded} = movieState;
-    const classes = useStyles();
     const {navbar} = useContext(NavbarContext);
 
     if(!navbar.isUserLoggedIn){

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Box, Avatar, Typography, Card, CardActionArea, CardActions, CardContent, CardMedia,
+import {Typography, Card, CardActionArea, CardActions, CardContent, CardMedia,
     Grid, Button  } from '@material-ui/core';
 import {Skeleton } from '@material-ui/lab';
 import { useStyles } from '../layout/Style';

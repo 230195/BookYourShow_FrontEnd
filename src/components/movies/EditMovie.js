@@ -1,6 +1,6 @@
 import React,  { useState, useEffect, useContext} from "react";
 import {TextField, FormControl, Grid,
-     Card, Typography, CardContent, Button } from '@material-ui/core';
+     Card, CardContent, Button } from '@material-ui/core';
 import clsx from 'clsx';
 import {useStyles} from '../layout/Style';
 import {Skeleton } from '@material-ui/lab';
@@ -70,7 +70,6 @@ const EditMovie = (props) => {
                  isimageUpdated: true,
                  thumbnailSrc: URL.createObjectURL(event.target.files[0])
                 });
-            var image = document.getElementById('inp_thumbnail');
             document.getElementById('myImg').src = URL.createObjectURL(event.target.files[0]);
         }
     };

@@ -7,6 +7,8 @@ import AddMovie from '../components/movies/AddMovie';
 import GetMovies from '../components/movies/GetMovies';
 import MovieDetails from '../components/movies/MovieDetail';
 import EditMovie from '../components/movies/EditMovie';
+import DataGridComponent from '../components/grid/DataGridCompont';
+import NotFound from '../components/layout/NotFound';
 
 const RouteHelper = () => {
     return ( 
@@ -18,6 +20,8 @@ const RouteHelper = () => {
             <Route exact path='/movie/add' component={AddMovie}  />
             <Route exact path='/movie/get/:id' component={MovieDetails}  />
             <Route exact path='/movie/edit/:id' component={EditMovie} />
+            <Route exact path='/data' component={DataGridComponent} />
+            <Route component={NotFound} />
         </Switch>
      );
 }

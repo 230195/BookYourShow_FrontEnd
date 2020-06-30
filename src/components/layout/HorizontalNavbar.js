@@ -2,9 +2,9 @@ import React, {useContext, useState} from 'react';
 import {NavbarContext} from '../../context/NavbarContext';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-import {Link, NavLink} from  'react-router-dom';
+import {NavLink} from  'react-router-dom';
 import IconButton from '@material-ui/core/IconButton';
-import {AppBar, Fab, Toolbar, Typography, Menu, MenuItem } from '@material-ui/core';
+import {AppBar, Fab, Typography } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import {drawerWidth} from './SideNavbar';
 
@@ -44,12 +44,12 @@ const useStyles = makeStyles((theme) => ({
       },
   }));
 
-  const HorizontalNavbar = (props) => {
+  const HorizontalNavbar = () => {
     const classes = useStyles();
     const {navbar, toggleNavbar, logoutUser} = useContext(NavbarContext);
     const {isNavOpen, userName, isUserLoggedIn} = navbar; 
-    const [anchorEl, setAnchorEl] = useState(null);
-    const initials = userName.split(" ").map((item, key) => {
+    const [, setAnchorEl] = useState(null);
+    const initials = userName.split(" ").map((item) => {
       return item[0];
   });
 
@@ -57,9 +57,6 @@ const useStyles = makeStyles((theme) => ({
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
   
   const handleDrawerOpen = () => {
       toggleNavbar(true);
@@ -115,7 +112,7 @@ const useStyles = makeStyles((theme) => ({
               <div className="dropdown-menu dr-menu-profile" aria-labelledby="navbarDropdown">
                 <a className="dropdown-item" href="#">Profile</a>
                 <div className="dropdown-divider"></div>
-                <a className="dropdown-item" onClick={logout}>Logout</a>
+                <a className="dropdown-item" href="#" onClick={logout}>Logout</a>
               </div>
             </li>
           </ul>
@@ -125,51 +122,6 @@ const useStyles = makeStyles((theme) => ({
       </nav>
       </AppBar>
       );
-  
-      {/* return ( <AppBar
-        position="fixed"
-        className={clsx(classes.appBar, {
-          [classes.appBarShift]: isNavOpen,
-        })}
-      >
-        <Toolbar >
-
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              onClick={handleDrawerOpen}
-              edge="start"
-              className={clsx(classes.menuButton, isNavOpen && classes.hide)}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography variant="h6" noWrap>
-              <NavLink to="/">
-                Book Your Show
-                </NavLink>
-              </Typography>
-           
-
-            <div>
-             
-              <Fab className='user-floating-btn' aria-label="add" onClick={handleClick}>
-                AS
-              </Fab>
-            
-            <Menu
-              id="profile-menu"
-              anchorEl={anchorEl}
-              open={Boolean(anchorEl)}
-              onClose={handleClose}
-            >
-              <MenuItem onClick={handleClose}>Profile</MenuItem>
-              <MenuItem onClick={handleClose}>My account</MenuItem>
-              <MenuItem onClick={handleClose}>Logout</MenuItem>
-            </Menu>
-            </div>
-           
-        </Toolbar>
-      </AppBar> ); */}
   }
    
   export default HorizontalNavbar;

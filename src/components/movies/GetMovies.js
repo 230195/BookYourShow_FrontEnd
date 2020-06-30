@@ -1,18 +1,12 @@
 import InfiniteLoader from 'react-infinite-loader'
 import React, {useEffect, useState, useContext} from 'react';
-import { MovieSharp } from '@material-ui/icons';
-import {Link} from 'react-router-dom';
-import {Card, CardActionArea, CardActions, CardContent, CardMedia,
-    Grid, Typography, Button} from '@material-ui/core';
+import {Grid, Button} from '@material-ui/core';
 import axios from 'axios';
-import { useStyles } from '../layout/Style';
-import { AxiosConstant } from '../../constants/AxiosConstants';
 import  MovieSummary from './MovieSummary';
 import { NavbarContext } from '../../context/NavbarContext';
 
 const GetMovies = (props) => {
     const [movieState, setMovies] = useState({movies : [], pageNumber:1, pageSize:10, isLast: false, isLoaded: false});
-    const classes = useStyles();
     const {navbar} = useContext(NavbarContext);
 
     if(!navbar.isUserLoggedIn){
@@ -28,7 +22,7 @@ const GetMovies = (props) => {
             let result = res.data;
             if(result.data){
                 const itemArr = [];
-                result.data.forEach((item, index) =>{
+                result.data.forEach((item) =>{
                     itemArr.push(item);
                 })
                 setMovies({
