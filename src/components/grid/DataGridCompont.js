@@ -23,15 +23,7 @@ const ImageHelper = (props) => {
 
 const DataGridComponent = () => {
      
-    const rows = [
-        { id: 1, title: 'row1', count: 20}, { id: 2, title: 'row2', count: 40 }, { id: 3, title: 'row3', count: 60 },
-        { id: 4, title: 'row1', count: 20}, { id: 5, title: 'row2', count: 40 }, { id: 6, title: 'row3', count: 60 },
-        { id: 7, title: 'row1', count: 20}, { id: 8, title: 'row2', count: 40 }, { id: 9, title: 'row3', count: 60 },
-        { id: 10, title: 'row1', count: 20}, { id: 11, title: 'row2', count: 40 }, { id: 12, title: 'row3', count: 60 },
-        { id: 13, title: 'row1', count: 20}, { id: 14, title: 'row2', count: 40 }, { id: 15, title: 'row3', count: 60 },
-        { id: 16, title: 'row1', count: 20}, { id: 17, title: 'row2', count: 40 }, { id: 18, title: 'row3', count: 60 },
-        { id: 19, title: 'row1', count: 20}, { id: 20, title: 'row2', count: 40 }, { id: 21, title: 'row3', count: 60 },
-    ];
+    const rows = [];
 
     const columns = [
         { key: 'id', name: 'ID',  resizable:true },
@@ -43,22 +35,22 @@ const DataGridComponent = () => {
     const [grid, setGrid] = useState({
         rows,
         activePage: 1,
-        itemPerPage: 10,
+        itemPerPage: 2,
         totalItemCount: 10,
         pageRangeDisplayed: 5,
         isLoaded: false
     });
-    const getGridData = () => {
-        axios.get(`movie/GetMoviePagination?pageNumber=${grid.activePage}&pageSize=${grid.itemPerPage}`)
+    const getGridData = (pageNumber) => {
+        axios.get(`movie/GetMoviePagination?pageNumber=${pageNumber||grid.activePage}&pageSize=${grid.itemPerPage}`)
             .then((res) => {
                 let result = res?.data?.data;
                 if(result){
-                    console.log(result.data[1])
                     setGrid({
                         ...grid,
                         totalItemCount: result.totalItemCount,
                         rows: result.data,
-                        isLoaded: true
+                        isLoaded: true,
+                        activePage: pageNumber||grid.activePage
                     })
                 }
             });
@@ -88,12 +80,12 @@ const DataGridComponent = () => {
       };
 
       const handlePageChange = (pageNumber) => {
-        console.log(`active page is ${pageNumber}`);
         setGrid({
             ...grid,
             activePage: pageNumber
         });
-        console.log(grid)
+        getGridData(pageNumber);
+        console.log(grid);
       }
     
     return ( 
