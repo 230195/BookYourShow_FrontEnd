@@ -5,7 +5,8 @@ import 'react-data-grid/dist/react-data-grid.css';
 import {isMobile, isTablet} from 'react-device-detect';
 import axios from 'axios';
 import {GetImagePath} from '../../helperMethods/CommonMethods';
-
+import DropDownEditor from '../helperComponents/DropDownComponents';
+import { GridOnSharp } from '@material-ui/icons';
 
 const ImageHelper = (props) => {
     let url = props.row?.thumbnailUrl;
@@ -21,25 +22,39 @@ const ImageHelper = (props) => {
    
 }
 
-const DataGridComponent = () => {
-     
-    const rows = [];
+const DataGridComponent = (props) => {
 
-    const columns = [
-        { key: 'id', name: 'ID',  resizable:true },
-        {key:'thumbnailUrl', name:'Image', formatter: ImageHelper, resizable: true, width :300},
-        {key: 'movieName', name: 'Movie Name', resizable: true},
-        { key: 'movieSummary', name: 'Summary', editable:true, resizable:true },
-        { key: 'launchDate', name: 'Launch Date', editable:true,  resizable:true }
-    ];
     const [grid, setGrid] = useState({
-        rows,
+        rows: [],
         activePage: 1,
-        itemPerPage: 2,
+        itemPerPage: 3,
         totalItemCount: 10,
         pageRangeDisplayed: 5,
         isLoaded: false
     });
+
+    const changeDropdown = (val, rowItem) => {
+        let rows = grid.rows.map(row => {
+            if(row.id === rowItem.id){
+                row.id = val
+            }
+            return row;
+        });
+        setGrid({
+            ...grid,
+            rows 
+        })
+    };
+
+    const columns = [
+        { key: 'id', name: 'ID',  resizable:true },
+        { key:'thumbnailUrl', name:'Image', formatter: ImageHelper, resizable: true, width :300},
+        { key: 'movieName', name: 'Movie Name', resizable: true},
+        { key: 'movieSummary', name: 'Summary', editable:true, resizable:true },
+        { key: 'launchDate', name: 'Launch Date', editable:true,  resizable:true },
+        { key:'mediaUrls', name:'dropdown', editable:true, formatter:(props) => <DropDownEditor {...props} changeDropdown={changeDropdown} />},
+    ];
+   
     const getGridData = (pageNumber) => {
         axios.get(`movie/GetMoviePagination?pageNumber=${pageNumber||grid.activePage}&pageSize=${grid.itemPerPage}`)
             .then((res) => {

@@ -235,3 +235,6 @@ nav{
 .rdg{
   --row-width: auto!important
 }
+.dropdown-data-grid-col{
+  vertical-align: middle!important;
+}
