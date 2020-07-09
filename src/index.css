@@ -238,3 +238,11 @@ nav{
 .dropdown-data-grid-col{
   vertical-align: middle!important;
 }
+.btn-add-row{
+  float: right;
+  margin-bottom: 5px!important;
+}
+.rdg-header-row div{
+  background: #1976d2;
+  color:white
+}

@@ -18,3 +18,14 @@ export const useStyles = makeStyles((theme) => ({
     overflowY: 'scroll',
   }  
   }));
+
+  export const  useNoUnderLineStyles = makeStyles({
+    underline: {
+      "&&&:before": {
+        borderBottom: "none"
+      },
+      "&&:after": {
+        borderBottom: "none"
+      }
+    }
+  });

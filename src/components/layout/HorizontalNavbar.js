@@ -90,7 +90,7 @@ const useStyles = makeStyles((theme) => ({
        
         <NavLink  to="/">
           <Typography variant="h6" color="textPrimary" noWrap>
-            Book Your Show
+            React-DataGrid-SampleApp
           </Typography>
         </NavLink>
         
